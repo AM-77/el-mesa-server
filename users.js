@@ -1,38 +1,38 @@
-let users = []
+const users = [];
 
-const add_user = ({ id, name, room }) => {
+const addUser = ({ id, name, room }) => {
+  const userName = name.trim().toLowerCase();
+  const userRoom = room.trim().toLowerCase();
 
-    name = name.trim().toLowerCase()
-    room = room.trim().toLowerCase()
+  const exists = users.find(
+    (user) => user.name === userName && user.room === userRoom
+  );
+  if (exists) {
+    return { error: "Name is taken, please retry with a different name." };
+  }
+  users.push({ id, name: userName, room: userRoom });
+  return { user: { id, name: userName, room: userRoom } };
+};
 
-    let exists = users.find((user) => user.name === name && user.room === room)
-    if (exists)
-        return { error: "Name is taken, please retry with a different name." }
-    else
-        users.push({ id, name, room })
+const removeUser = (id) => {
+  const index = users.findIndex((user) => user.id === id);
+  if (index !== -1) {
+    return users.splice(index, 1)[0];
+  }
+};
 
-    return { user: { id, name, room } }
-}
+const getUser = (id) => users.find((user) => user.id === id);
 
-const remove_user = (id) => {
-    let index = users.findIndex((user) => user.id === id)
-    if (index !== -1) {
-        return users.splice(index, 1)[0]
+const getUsersFromRoom = (room) => users.filter((user) => user.room === room);
+
+const getRooms = () => {
+  const rooms = [];
+  users.forEach((user) => {
+    if (rooms.indexOf(user.room) === -1) {
+      rooms.push(user.room);
     }
-}
+  });
+  return rooms;
+};
 
-const get_user = (id) => users.find(user => user.id === id)
-
-const get_users_from_room = (room) => users.filter(user => user.room === room)
-
-const get_rooms = () => {
-    let rooms = []
-    users.map(user => {
-        if (rooms.indexOf(user.room) === -1) {
-            rooms.push(user.room)
-        }
-    })
-    return rooms
-}
-
-module.exports = { add_user, remove_user, get_user, get_users_from_room, get_rooms }
+module.exports = { addUser, removeUser, getUser, getUsersFromRoom, getRooms };

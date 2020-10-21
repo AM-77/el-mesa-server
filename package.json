@@ -5,13 +5,27 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "lint": "eslint . --ignore-path ./.eslintignore --color",
+    "lint:fix": "eslint . --ignore-path ./.eslintignore --color --fix"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.13.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.2",
+    "mocha": "^8.2.0",
+    "nyc": "^15.1.0",
+    "prettier": "^2.1.2"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -19,6 +33,6 @@
     "socket.io": "^2.3.0"
   },
   "engines": {
-    "node": "13.x"
+    "node": "14.x"
   }
 }
