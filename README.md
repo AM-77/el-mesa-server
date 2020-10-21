@@ -17,6 +17,10 @@
   - [Socket.io](https://socket.io): An open-source JavaScript library for realtime web applications.
   - [Express](http://expressjs.com/): An open source back end web application framework for Node.js.
 
+## Deployed to:
+
+  - [Heroku](https://www.heroku.com) A cloud platform as a service supporting several programming languages
+
 ## Developement:
 
 - clone the repo:
